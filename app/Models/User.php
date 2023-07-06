@@ -18,6 +18,15 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     public function hasRole(int $roleId): bool
     {
@@ -27,5 +36,18 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function checkPermission($permission)
+    {
+        $roles = auth()->user()->roles;
+        $access = false;
+        foreach ($roles as $role) {
+            $permissions = $role->permissions;
+            if ($permissions->contains('name', $permission)) {
+                $access = true;
+            }
+        }
+        return $access;
     }
 }

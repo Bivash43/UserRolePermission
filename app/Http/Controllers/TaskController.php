@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+// use App\Models\Permission;
 
 use Illuminate\Http\Request;
 
@@ -83,5 +84,13 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->delete();
         return redirect()->route('tasks.index');
+    }
+    public function __construct()
+    {
+
+        $this->middleware(['access.give:Create'])->only('create');
+        $this->middleware(['access.give:Update'])->only('edit');
+        $this->middleware(['access.give:Read'])->only('show');
+        $this->middleware(['access.give:Delete'])->only('destroy');
     }
 }
