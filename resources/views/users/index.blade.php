@@ -3,9 +3,7 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Users and Roles</h1>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUserModal">Create User</button>
-         
+        <h1>Users and Roles</h1>         
     </div>
 
     <table class="table table-striped">
@@ -29,7 +27,6 @@
                 </td>
                 <td>
                     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#assignRoleModal{{ $user->id }}">Assign Role</button>
-                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editUserModal{{ $user->id }}">Edit</button>
                     <form class="d-inline" action="{{ route('users.destroy', $user->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -37,9 +34,6 @@
                     </form>
                 </td>
             </tr>
-
-            <!-- Edit User Modal -->
-            @include('users.editUser')
 
             <!--Assign Roles to User Model-->
             @include('roles.assignRole')
@@ -51,9 +45,4 @@
 
 <!--Tables to show roles and Permissions-->
 @include('roles.index')
-
-<!-- Create User Modal -->
-@include('users.createUser')
-
-
 

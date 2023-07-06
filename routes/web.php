@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
+    Route::resource('tasks', TaskController::class);
 
     Route::post('users/{user}/assign-role', [UserController::class, 'assignRole'])->name('users.assignRoles');
     Route::post('roles/{role}/assign-permission', [RoleController::class, 'assignPermissions'])->name('roles.assignPermissions');
