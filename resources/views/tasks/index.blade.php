@@ -4,8 +4,11 @@
 @section('content')
     <h1>Task List</h1>
     @if (auth()->user()->checkPermission('Create'))
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary">Create New Task</a>
+    <a href="{{ route('tasks.create') }}" class="btn btn-primary">Create New Task</a>    
     @endif
+
+    <a href="{{ route('users.index') }}" class="btn btn-secondary">Back to Previous Page</a>
+
     <table class="table mt-4">
         <thead>
             <tr>
@@ -35,7 +38,7 @@
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
                         </form>
                         @endif
-                        
+
                     </td>
                 </tr>
             @endforeach

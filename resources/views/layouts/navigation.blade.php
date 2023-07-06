@@ -15,6 +15,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('users.index') }}" class="btn btn-primary">Users, Roles & Permission</x-nav-link>
+                    <x-nav-link href="{{ route('tasks.index') }}" class="btn btn-primary">View Tasks</x-nav-link>
                 </div>
             </div>
 

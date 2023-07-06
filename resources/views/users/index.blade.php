@@ -5,6 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Users and Roles</h1>         
     </div>
+    <a href="{{ route('tasks.index') }}" class="btn btn-primary">Show Tasks</a>
 
     <table class="table table-striped">
         <thead>
