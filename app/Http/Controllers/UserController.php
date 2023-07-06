@@ -30,7 +30,7 @@ class UserController extends Controller
         ]);
 
         User::create($validatedData);
-        return redirect()->route('users.index')->with('success', 'User created successfully');
+        return redirect()->route('users.index');
     }
 
 
@@ -48,13 +48,13 @@ class UserController extends Controller
         ]);
 
         $user->update($validatedData);
-        return redirect()->route('users.index')->with('success', 'User updated successfully');
+        return redirect()->route('users.index');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        return redirect()->route('users.index');
     }
 
     public function assignRole(Request $request, User $user)
@@ -66,6 +66,6 @@ class UserController extends Controller
 
         $user->roles()->sync($validatedData['roles']);
 
-        return redirect()->back()->with('success', 'Roles assigned successfully');
+        return redirect()->back();
     }
 }

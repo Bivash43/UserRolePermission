@@ -27,7 +27,7 @@ class RoleController extends Controller
         ]);
 
         Role::create($validatedData);
-        return redirect()->route('roles.index')->with('success', 'Role created successfully');
+        return redirect()->route('roles.index');
     }
 
 
@@ -44,13 +44,13 @@ class RoleController extends Controller
         ]);
 
         $role->update($validatedData);
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
+        return redirect()->route('roles.index');
     }
 
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully');
+        return redirect()->route('roles.index');
     }
 
     public function assignPermissions(Request $request, Role $role)
@@ -62,6 +62,6 @@ class RoleController extends Controller
 
         $role->permissions()->sync($validatedData['permissions']);
 
-        return redirect()->back()->with('success', 'permissions assigned successfully');
+        return redirect()->back();
     }
 }
